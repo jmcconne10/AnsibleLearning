@@ -1,0 +1,11 @@
+<powershell>
+$admin = [adsi]("WinNT://./administrator, user")
+$admin.psbase.invoke("SetPassword", "P@ssw0rd")
+Import-Module servermanager
+Add-WindowsFeature telnet-client
+</powershell>
+<script>
+mkdir c:\temp
+echo Current date and time >> c:\Temp\test.log
+echo %DATE% %TIME% >> c:\temp\test.log
+</script>

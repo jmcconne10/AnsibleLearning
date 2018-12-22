@@ -1,0 +1,11 @@
+---
+  - name: ensure a list of packages installed
+    hosts: linuxclients
+    become: true
+    tasks: 
+    - name: install yum!
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - nano

@@ -1,0 +1,22 @@
+---
+- name: Install nginx
+  hosts: linuxclients
+  become: true
+  roles: 
+    - geerlingguy.nginx
+
+  tasks:
+  - name: Install nginx
+    yum:
+      name: nginx
+      state: present
+
+  - name: Insert Index Page
+    template:
+      src: /home/ec2-user/share/nginx/html/index.html
+      dest: /usr/share/nginx/html/index.html
+
+  - name: Start NGiNX
+    service:
+      name: nginx
+      state: started
